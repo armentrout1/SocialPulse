@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/index.html"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database-url",
+    "FACEBOOK_ACCESS_TOKEN": "@facebook-access-token",
+    "FACEBOOK_PAGE_ID": "@facebook-page-id",
+    "PERPLEXITY_API_KEY": "@perplexity-api-key"
+  }
+}
