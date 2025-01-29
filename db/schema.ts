@@ -7,6 +7,7 @@ export const users = pgTable("users", {
   password: text("password").notNull(),
   fbAccessToken: text("fb_access_token"),
   fbPageId: text("fb_page_id"),
+  createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const posts = pgTable("posts", {
@@ -15,7 +16,7 @@ export const posts = pgTable("posts", {
   content: text("content").notNull(),
   imageUrl: text("image_url").notNull(),
   scheduledFor: timestamp("scheduled_for").notNull(),
-  status: text("status").notNull().default("pending"), // pending, published, failed
+  status: text("status", { enum: ["pending", "published", "failed"] }).notNull().default("pending"),
   aiGenerated: boolean("ai_generated").default(false),
   platformData: json("platform_data").$type<{
     fbPostId?: string;
@@ -29,11 +30,13 @@ export const posts = pgTable("posts", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Create Zod schemas for type validation
 export const insertUserSchema = createInsertSchema(users);
 export const selectUserSchema = createSelectSchema(users);
 export const insertPostSchema = createInsertSchema(posts);
 export const selectPostSchema = createSelectSchema(posts);
 
+// Export types for use in the application
 export type InsertUser = typeof users.$inferInsert;
 export type SelectUser = typeof users.$inferSelect;
 export type InsertPost = typeof posts.$inferInsert;
