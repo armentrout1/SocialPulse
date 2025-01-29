@@ -11,17 +11,21 @@ import Sidebar from "@/components/layout/sidebar";
 
 function Router() {
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen bg-background">
       <Sidebar />
-      <main className="flex-1 overflow-auto bg-background">
-        <Switch>
-          <Route path="/" component={Dashboard} />
-          <Route path="/posts" component={Posts} />
-          <Route path="/analytics" component={Analytics} />
-          <Route path="/settings" component={Settings} />
-          <Route component={NotFound} />
-        </Switch>
-      </main>
+      <div className="flex-1 flex flex-col md:pl-64">
+        <main className="flex-1 py-8 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto">
+            <Switch>
+              <Route path="/" component={Dashboard} />
+              <Route path="/posts" component={Posts} />
+              <Route path="/analytics" component={Analytics} />
+              <Route path="/settings" component={Settings} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
