@@ -22,7 +22,7 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "@database-url",
+    "DATABASE_URL": "@DATABASE_URL",
     "PERPLEXITY_API_KEY": "@perplexity-api-key",
     "FACEBOOK_ACCESS_TOKEN": "@facebook-access-token",
     "FACEBOOK_PAGE_ID": "@facebook-page-id"
