@@ -22,7 +22,7 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "@DATABASE_URL",
+    "DATABASE_URL": "postgresql://neondb_owner:npg_o1ktBqaFHS3u@ep-tight-lab-a4co6jma.us-east-1.aws.neon.tech/neondb?sslmode=require",
     "PERPLEXITY_API_KEY": "@perplexity-api-key",
     "FACEBOOK_ACCESS_TOKEN": "@facebook-access-token",
     "FACEBOOK_PAGE_ID": "@facebook-page-id"
