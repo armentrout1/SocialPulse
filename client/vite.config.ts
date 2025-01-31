@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  root: "./client/src", // ✅ Ensures Vite looks in `client/src/`
+  root: "client", // ✅ Ensures Vite looks in `client/`
   plugins: [react()],
   resolve: {
     alias: {
@@ -18,6 +18,9 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(__dirname, "index.html"), // ✅ Explicitly set the entry file
+    },
   },
   server: {
     port: 5173,
