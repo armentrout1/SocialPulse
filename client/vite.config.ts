@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: "./", // ✅ Ensures correct asset paths
+  base: "/", // ✅ Fixes broken paths on Vercel
   plugins: [react()],
   resolve: {
     alias: {
@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    assetsDir: "assets", // ✅ Ensures JavaScript and CSS are served properly
+    assetsDir: "assets", // ✅ Ensures CSS & JS are in `dist/assets`
     rollupOptions: {
       input: path.resolve(__dirname, "index.html"),
     },
